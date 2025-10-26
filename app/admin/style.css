@@ -24,6 +24,7 @@ h1{
 table{
     width: 100%;
     border-collapse: collapse;
+    overflow-x: scroll;
 }
 /* tr:nth-child(even) {
   background-color: #D6EEEE;
