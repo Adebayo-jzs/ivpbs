@@ -15,11 +15,12 @@ export default function AdminPage() {
   }, []);
 
   return (
-    <div style={{ maxWidth: "90%", margin: "40px auto", }}>
+    <div style={{ maxWidth: "1200px", margin: "40px auto", }}>
       <h1>Admin Dashboard</h1>
       {submissions.length === 0 ? (
         <p>No submissions yet.</p>
       ) : (
+        <div className="table-container">
         <table border="1" cellPadding="8">
           <thead>
             <tr>
@@ -79,13 +80,16 @@ export default function AdminPage() {
                   <td>{s.organization}</td>
                   <td>{s.date}</td>
                   <td>{localTime}</td>
+                  <td>
                   <button id="accept">Accept</button>
                   <button id="decline">Decline</button>
+                  </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+        </div>
       )}
     </div>
   );

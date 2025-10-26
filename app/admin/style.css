@@ -21,10 +21,15 @@ h1{
 /* table, th, td {
   border: 1px solid black;
 } */
+ .table-container {
+  width: 100%;
+  overflow-x: auto; /* ✅ Enables horizontal scroll */
+}
 table{
     width: 100%;
     border-collapse: collapse;
-    overflow-x: scroll;
+    
+    /* margin: ; */
 }
 /* tr:nth-child(even) {
   background-color: #D6EEEE;
