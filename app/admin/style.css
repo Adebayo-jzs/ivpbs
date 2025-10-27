@@ -4,12 +4,26 @@ body{
 h1{
     font-size: 30px;
 }
+.cards{
+  display: flex;
+  gap: 20px;
+}
+.card{
+  background-color: #D6EEEE;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+}
+.card-title{
+  margin-bottom: 30px;
+}
 #accept{
     background-color: green;
     margin-right: 10px;
     display: inline;
     border-radius: 5px;
     padding: 5px 10px;
+    cursor: pointer;
 }
 #decline{
     background-color: red;
@@ -17,6 +31,7 @@ h1{
     display: inline;
     border-radius: 5px;
     padding: 5px 10px;
+    cursor: pointer;
 }
 /* table, th, td {
   border: 1px solid black;

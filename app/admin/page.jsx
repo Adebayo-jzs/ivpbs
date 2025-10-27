@@ -13,20 +13,47 @@ export default function AdminPage() {
     };
     fetchData();
   }, []);
-
+  // const handleAction = async (id, action) => {
+  //   const res = await fetch("/api/update-status", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ id, action }),
+  //   });
+  //   const data = await res.json();
+  //   alert(data.message);
+  //   fetchData(); // refresh dashboard
+  // };
+  const name = "unknown";
   return (
     <div style={{ maxWidth: "1200px", margin: "40px auto", }}>
-      <h1>Admin Dashboard</h1>
+      <div>
+      <h1>Admn Dashboard</h1>
+      <p>Welcome {name}</p>
+      </div>
       {submissions.length === 0 ? (
         <p>No submissions yet.</p>
       ) : (
         <div className="table-container">
+        <div className="cards">
+          <div className="card">
+            <h1 className="card-title">Visits Booked</h1>
+            <p className="card-info">{submissions.length}</p>
+          </div>
+          <div className="card">
+            <h1 className="card-title">Visits Booked</h1>
+            <p className="card-info">{submissions.length}</p>
+          </div>
+          <div className="card">
+            <h1 className="card-title">Visits Booked</h1>
+            <p className="card-info">{submissions.length}</p>
+          </div>
+        </div>
         <table border="1" cellPadding="8">
           <thead>
             <tr>
               <th>Name</th>
               <th>Email</th>
-              <th>Organization</th>
+              <th>Industries</th>
               <th>Trip Date</th>
               <th>Request time</th>
               <th>Action</th>
