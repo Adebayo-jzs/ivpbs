@@ -10,6 +10,7 @@ const submissionSchema = new mongoose.Schema({
   email: String,
   organization: String,
   date: String,
+  nop: String,
   createdAt: { type: Date, default: Date.now },
 });
 

@@ -77,6 +77,7 @@ export default function AdminPage() {
               <th>Email</th>
               <th>Industries</th>
               <th>Trip Date</th>
+              <th>NO. of People</th>
               <th>Request time</th>
               <th>Action</th>
             </tr>
@@ -128,6 +129,7 @@ export default function AdminPage() {
                   <td>{s.email}</td>
                   <td>{s.organization}</td>
                   <td>{s.date}</td>
+                  <td>{s.nop}</td>
                   <td>{localTime}</td>
                   <td>
                   <button

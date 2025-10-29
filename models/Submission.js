@@ -6,6 +6,7 @@ const SubmissionSchema = new mongoose.Schema(
     email: String,
     organization: String,
     date: String,
+    nop:String,
   },
   { timestamps: true } // adds createdAt and updatedAt automatically
 );

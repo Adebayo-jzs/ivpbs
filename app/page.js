@@ -7,6 +7,7 @@ export default function HomePage() {
     email: "",
     organization: "",
     date: "",
+    nop:"",
   });
   const [message, setMessage] = useState("");
 
@@ -44,6 +45,7 @@ export default function HomePage() {
           className="input"
         />
         <input
+          type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
@@ -71,6 +73,15 @@ export default function HomePage() {
           <option value="Google Nigeria">Google Nigeria</option>
           <option value="Coca-Cola Nigeria">Coca-Cola Nigeria</option>
         </select>
+        <input
+          type="number"
+          name="nop"
+          value={formData.nop}
+          onChange={handleChange}
+          placeholder="Number of people attending"
+          required
+          className="input"
+        />
 
         <input
           type="date"
