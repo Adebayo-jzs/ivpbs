@@ -74,7 +74,7 @@ export default function AdminPage() {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Email</th>
+              {/* <th>Email</th> */}
               <th>Industries</th>
               <th>Trip Date</th>
               <th>NO. of People</th>
@@ -126,7 +126,7 @@ export default function AdminPage() {
               return (
                 <tr key={s._id}>
                   <td>{s.name}</td>
-                  <td>{s.email}</td>
+                  {/* <td>{s.email}</td> */}
                   <td>{s.organization}</td>
                   <td>{s.date}</td>
                   <td>{s.nop}</td>
