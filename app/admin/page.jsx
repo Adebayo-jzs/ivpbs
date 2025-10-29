@@ -3,16 +3,16 @@ import { useEffect, useState } from "react";
 import "./style.css"
 
 export default function AdminPage() {
-  const [submissions, setSubmissions] = useState([]);
+  // const [submissions, setSubmissions] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/submit");
-      const data = await res.json();
-      setSubmissions(data);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch("/api/submit");
+  //     const data = await res.json();
+  //     setSubmissions(data);
+  //   };
+  //   fetchData();
+  // }, []);
   // const handleAction = async (id, action) => {
   //   const res = await fetch("/api/update-status", {
   //     method: "POST",
@@ -23,11 +23,33 @@ export default function AdminPage() {
   //   alert(data.message);
   //   fetchData(); // refresh dashboard
   // };
+  const [submissions, setSubmissions] = useState([]);
+
+  const fetchData = async () => {
+    const res = await fetch("/api/submit");
+    const data = await res.json();
+    setSubmissions(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleAction = async (id, action) => {
+    const res = await fetch("/api/update-status", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, action }),
+    });
+    const data = await res.json();
+    alert(data.message);
+    fetchData(); // refresh dashboard
+  };
   const name = "unknown";
   return (
     <div style={{ maxWidth: "1200px", margin: "40px auto", }}>
       <div>
-      <h1>Admn Dashboard</h1>
+      <h1>Admin Dashboard</h1>
       <p>Welcome {name}</p>
       </div>
       {submissions.length === 0 ? (
@@ -98,18 +120,28 @@ export default function AdminPage() {
                 </tr>
           </tbody> */}
           <tbody>
-            {submissions.map((s, i) => {
+            {submissions.map((s) => {
               const localTime = new Date(s.createdAt).toLocaleString();
               return (
-                <tr key={i}>
+                <tr key={s._id}>
                   <td>{s.name}</td>
                   <td>{s.email}</td>
                   <td>{s.organization}</td>
                   <td>{s.date}</td>
                   <td>{localTime}</td>
                   <td>
-                  <button id="accept">Accept</button>
-                  <button id="decline">Decline</button>
+                  <button
+                    onClick={() => handleAction(s._id, "accepted")}
+                    id="accept"
+                  >
+                    Accept
+                  </button>
+                  <button
+                    onClick={() => handleAction(s._id, "declined")}
+                    id="decline"
+                  >
+                    Decline
+                  </button>
                   </td>
                 </tr>
               );

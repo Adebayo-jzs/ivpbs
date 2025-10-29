@@ -29,7 +29,7 @@ export async function POST(req) {
 
     // Send email
     await resend.emails.send({
-      from: "Industrial Visit <no-reply@yourdomain.com>",
+      from: "Industrial Visit <no-reply@adebayodv.com.ng>",
       to: submission.email,
       subject:
         action === "accepted"
