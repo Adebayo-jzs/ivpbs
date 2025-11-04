@@ -1,0 +1,16 @@
+
+input {
+    display: block;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 8px;
+    border-bottom: 1px solid black;
+    outline:none;
+}
+button {
+    background: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}

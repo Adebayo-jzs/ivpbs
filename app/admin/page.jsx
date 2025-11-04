@@ -81,45 +81,7 @@ export default function AdminPage() {
               <th>Request time</th>
               <th>Action</th>
             </tr>
-          </thead>
-          {/* <tbody> 
-                <tr>
-                  <td>Samod Adebayo</td>
-                  <td>adedejiade@email.com</td>
-                  <td>Dangote</td>
-                  <td>27/11/2025</td>
-                  <td>2025-10-09 14:51</td>
-                  <td>
-                    <button id="accept">Accept</button>
-                    <button id="decline">Decline</button>
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <td>Samod</td>
-                  <td>ad@email.com</td>
-                  <td>Dangote Group </td>
-                  <td>27/11/2025</td>
-                  <td>2025-10-09 14:51</td>
-                  <td>
-                    <button id="accept">Accept</button>
-                    <button id="decline">Decline</button>
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <td>Samod</td>
-                  <td>ad@email.com</td>
-                  <td>Dangote</td>
-                  <td>27/11/2025</td>
-                  <td>2025-10-09 14:51</td>
-                  <td>
-                    <button id="accept">Accept</button>
-                    <button id="decline">Decline</button>
-                  </td>
-                  
-                </tr>
-          </tbody> */}
+          </thead> 
           <tbody>
             {submissions.map((s) => {
               const localTime = new Date(s.createdAt).toLocaleString();

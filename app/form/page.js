@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-
+import './style.css'
 export default function HomePage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -36,22 +36,22 @@ export default function HomePage() {
     <div style={{ maxWidth: 500, margin: "40px auto" }}>
       <h2>Industrial Visit Registration</h2>
       <form onSubmit={handleSubmit}>
+        <label>Full Name</label>
         <input
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="Full Name"
+          placeholder="John Doe"
           required
-          className="input"
         />
+        <label>Email</label>
         <input
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="Email"
+          placeholder="user@gmail.com"
           required
-          className="input"
         />
 
         {/* Organization dropdown */}
@@ -60,7 +60,6 @@ export default function HomePage() {
           value={formData.organization}
           onChange={handleChange}
           required
-          className="input"
         >
           <option value="">Select Organization</option>
           <option value="Dangote Group">Dangote Group</option>
@@ -80,7 +79,6 @@ export default function HomePage() {
           onChange={handleChange}
           placeholder="Number of people attending"
           required
-          className="input"
         />
 
         <input
@@ -89,7 +87,6 @@ export default function HomePage() {
           value={formData.date}
           onChange={handleChange}
           required
-          className="input"
         />
 
         <button type="submit">Submit</button>
@@ -97,21 +94,7 @@ export default function HomePage() {
 
       {message && <p>{message}</p>}
 
-      <style jsx>{`
-        .input {
-          display: block;
-          margin-bottom: 12px;
-          width: 100%;
-          padding: 8px;
-        }
-        button {
-          background: #0070f3;
-          color: white;
-          padding: 10px 20px;
-          border: none;
-          cursor: pointer;
-        }
-      `}</style>
+      
     </div>
   );
 }
