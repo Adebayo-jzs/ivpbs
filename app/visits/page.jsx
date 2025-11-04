@@ -156,7 +156,7 @@ export default function VisitsPage() {
               onClick={() => handleBook(visit)}
               className="bg-blue-600 text-white px-4 py-2 mt-3 rounded hover:bg-blue-700"
             >
-              Book Visit
+              Book  Visit
             </button>
           </div>
         ))}
