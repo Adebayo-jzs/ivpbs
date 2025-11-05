@@ -1,118 +1,93 @@
-"use client";
-import { useEffect, useState } from "react";
+// app/admin/requests/page.jsx
+// import { createClient } from "@/lib/supabaseServer";
+import { supabase } from "@/lib/supabaseClient";
 import "./style.css"
+export default async function RequestsTable() {
+//   const supabase = createClient();
 
-export default function AdminPage() {
-  // const [submissions, setSubmissions] = useState([]);
+  // Fetch all requests, sorted newest first
+  const { data: requests, error } = await supabase
+    .from("requests")
+    .select("*")
+    .order("created_at", { ascending: false });
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await fetch("/api/submit");
-  //     const data = await res.json();
-  //     setSubmissions(data);
-  //   };
-  //   fetchData();
-  // }, []);
-  // const handleAction = async (id, action) => {
-  //   const res = await fetch("/api/update-status", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ id, action }),
-  //   });
-  //   const data = await res.json();
-  //   alert(data.message);
-  //   fetchData(); // refresh dashboard
-  // };
-  const [submissions, setSubmissions] = useState([]);
+  if (error) {
+    console.error("Error fetching requests:", error.message);
+    return <p className="text-red-500">Failed to load requests.</p>;
+  }
 
-  const fetchData = async () => {
-    const res = await fetch("/api/submit");
-    const data = await res.json();
-    setSubmissions(data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const handleAction = async (id, action) => {
-    const res = await fetch("/api/update-status", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, action }),
-    });
-    const data = await res.json();
-    alert(data.message);
-    fetchData(); // refresh dashboard
-  };
-  const name = "unknown";
   return (
-    <div style={{ maxWidth: "1200px", margin: "40px auto", }}>
-      <div>
-      <h1>Admin Dashboard</h1>
-      <p>Welcome {name}</p>
-      </div>
-      {submissions.length === 0 ? (
-        <p>No submissions yet.</p>
+    <div className="min-h-screen bg-gray-50 p-6">
+      <h1 className="text-3xl font-bold mb-6 text-center">Visit Requests</h1>
+
+      {requests.length === 0 ? (
+        <p className="text-center text-gray-500">No requests yet.</p>
       ) : (
-        <div className="table-container">
-        <div className="cards">
+          <div>
+            <div className="cards">
           <div className="card">
             <h1 className="card-title">Visits Booked</h1>
-            <p className="card-info">{submissions.length}</p>
+            <p className="card-info">{requests.length}</p>
           </div>
           <div className="card">
             <h1 className="card-title">Visits Booked</h1>
-            <p className="card-info">{submissions.length}</p>
+            <p className="card-info">{requests.length}</p>
           </div>
           <div className="card">
             <h1 className="card-title">Visits Booked</h1>
-            <p className="card-info">{submissions.length}</p>
+            <p className="card-info">{requests.length}</p>
           </div>
         </div>
-        <table border="1" cellPadding="8">
+          <table border="1" cellPadding="8">
           <thead>
             <tr>
-              <th>Name</th>
-              {/* <th>Email</th> */}
-              <th>Industries</th>
-              <th>Trip Date</th>
-              <th>NO. of People</th>
-              <th>Request time</th>
-              <th>Action</th>
+               <th>Name</th>
+               <th>Email</th>
+               <th>Visit Title</th>
+               <th>Date</th>
+               <th>Time</th>
+               <th>Location</th>
+               <th>Status</th>
+               <th className="p-3 text-center">Action</th>
             </tr>
           </thead> 
           <tbody>
-            {submissions.map((s) => {
-              const localTime = new Date(s.createdAt).toLocaleString();
+            {requests.map((req) => {
               return (
-                <tr key={s._id}>
-                  <td>{s.name}</td>
-                  {/* <td>{s.email}</td> */}
-                  <td>{s.organization}</td>
-                  <td>{s.date}</td>
-                  <td>{s.nop}</td>
-                  <td>{localTime}</td>
-                  <td>
-                  <button
-                    onClick={() => handleAction(s._id, "accepted")}
-                    id="accept"
-                  >
-                    Accept
-                  </button>
-                  <button
-                    onClick={() => handleAction(s._id, "declined")}
-                    id="decline"
-                  >
-                    Decline
-                  </button>
-                  </td>
-                </tr>
+                <tr key={req.id} className="border-t hover:bg-gray-50">
+                <td>{req.name}</td>
+                <td>{req.email}</td>
+                <td>{req.title}</td>
+                <td>{req.date}</td>
+                <td>{req.time}</td>
+                <td>{req.location}</td>
+                <td className="p-3 font-semibold text-blue-600">
+                  {req.status || "Pending"}
+                </td>
+                <td className="p-3 text-center">
+                  <form action={`/api/admin/requests/${req.id}/accept`} method="post">
+                    <button
+                      type="submit"
+                      id="accept"
+                    >
+                      Accept
+                    </button>
+                  </form>
+                  <form action={`/api/admin/requests/${req.id}/decline`} method="post">
+                    <button
+                      type="submit"
+                      id="decline"
+                    >
+                      Decline
+                    </button>
+                  </form>
+                </td>
+              </tr>
               );
             })}
           </tbody>
         </table>
-        </div>
+         </div>
       )}
     </div>
   );

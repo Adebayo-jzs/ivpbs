@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
+import { Logo } from "@/components/logo";
 
 export default function AuthPage() {
   const [email, setEmail] = useState("");
@@ -51,11 +52,19 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <form onSubmit={handleAuth} className="bg-white p-8 shadow rounded w-96">
-        <h2 className="text-2xl font-bold mb-4 text-center">
-          {isLogin ? "Login" : "Sign Up"}
-        </h2>
+    <div className="min-h-screen flex items-center justify-center bg-background p-4" style={{backgroundColor:"#000000",}}>
+      <div className="w-full max-w-md" style={{backgroundColor:"#0d0d0d",border:"0.1px solid rgba(255, 255, 255, 0.41)",borderRadius:"5px", paddingTop:"25px"}}>
+        <div className="flex justify-center">
+          <Logo size={90} />
+        </div>
+        <h1 className="text-2xl text-[white] font-bold mb-4 text-center">
+          {isLogin ? "Welcome Back!" : "Create Account"}
+        </h1>
+        <p className="text-2sm text-[white]  mb-4 text-center">
+          {isLogin ? "Login to access your account" : "Register to discover industry visits"}
+        </p>
+
+      <form onSubmit={handleAuth} className="px-8 pb-8">
 
         {!isLogin && (
           <>
@@ -63,14 +72,14 @@ export default function AuthPage() {
               type="text"
               placeholder="Full Name"
               onChange={(e) => setName(e.target.value)}
-              className="w-full border mb-3 p-2 rounded"
+              className="w-full mb-3 p-2 rounded"
               required
             />
             <input
               type="text"
               placeholder="Matric Number"
               onChange={(e) => setMatric(e.target.value)}
-              className="w-full border mb-3 p-2 rounded"
+              className="w-full mb-3 p-2 rounded"
               required
             />
           </>
@@ -80,23 +89,23 @@ export default function AuthPage() {
           type="email"
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border mb-3 p-2 rounded"
+          className="w-full mb-3 p-2 rounded"
           required
         />
         <input
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full border mb-3 p-2 rounded"
+          className="w-full mb-3 p-2 rounded"
           required
         />
 
-        <button className="bg-blue-600 text-white p-2 w-full rounded">
+        <button className="bg-[#1cca5b] text-black p-2 w-full rounded">
           {isLogin ? "Login" : "Sign Up"}
         </button>
 
         <p
-          className="text-sm text-center mt-3 text-blue-500 cursor-pointer"
+          className="text-sm text-center mt-3 text-[#1cca5b] cursor-pointer"
           onClick={() => setIsLogin(!isLogin)}
         >
           {isLogin
@@ -105,6 +114,7 @@ export default function AuthPage() {
         </p>
         {message && <p className="mt-2 text-center text-gray-600">{message}</p>}
       </form>
+      </div>
     </div>
   );
 }

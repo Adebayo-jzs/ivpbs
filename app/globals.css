@@ -18,9 +18,16 @@
     --foreground: #ededed;
   }
 }
-
+*/
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
-} */
+}
+input,textarea{
+  background-color: #000000;
+  color: white;
+  /* outline: none; */
+  outline-color: #1cca5b !important;  
+  outline-width: 3px !important;
+  border: 0.1px solid rgba(255, 255, 255, 0.41);
+}

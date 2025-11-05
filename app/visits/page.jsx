@@ -133,11 +133,11 @@ export default function VisitsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-black p-6">
       <div className="flex flex-col items-center mb-6">
-        <h1 className="text-3xl font-bold text-center mb-2">Available Visits</h1>
+        <h1 className="text-[#1cca5b] text-2xl font-bold text-center mb-2">Available Visits</h1>
         {profile && (
-          <p className="text-lg text-gray-700">Welcome, {profile.name} 👋</p>
+          <p className="text-lg text-white">Welcome, {profile.name} 👋</p>
         )}
       </div>
 
@@ -145,16 +145,16 @@ export default function VisitsPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {visits.map((visit) => (
-          <div key={visit.id} className="bg-white p-4 shadow rounded">
-            <h2 className="text-xl font-semibold">{visit.title}</h2>
-            <p className="text-gray-600 mt-1">
+          <div key={visit.id} className="bg-[#0d0d0d] p-4 shadow rounded" style={{border:"1px solid rgba(255, 255, 255, 0.41)"}}>
+            <h2 className="text-xl text-white font-semibold">{visit.title}</h2>
+            <p className="text-white mt-1">
               📍 {visit.industry + " - " + visit.location}
             </p>
-            <p className="text-gray-600">🗓️ {visit.date}</p>
-            <p className="text-gray-600">⏰ {visit.time}</p>
+            <p className="text-white">🗓️ {visit.date}</p>
+            <p className="text-white">⏰ {visit.time}</p>
             <button
               onClick={() => handleBook(visit)}
-              className="bg-blue-600 text-white px-4 py-2 mt-3 rounded hover:bg-blue-700"
+              className="bg-[#1cca5b] text-white px-4 py-2 mt-3 rounded hover:bg-[#1cca5b]-700"
             >
               Book  Visit
             </button>
