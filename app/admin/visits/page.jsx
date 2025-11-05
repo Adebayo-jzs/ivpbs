@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
-import AdminRequestsPage from "../RequestsTable";
+import RequestsTable from "../RequestsTable";
 export default function AdminVisits() {
   const [visits, setVisits] = useState([]);
   const [form, setForm] = useState({
@@ -135,7 +135,7 @@ export default function AdminVisits() {
           </div>
         ))}
       </div>
-      <AdminRequestsPage/>
+      {/* <RequestsTable/> */}
     </div>
   );
 }

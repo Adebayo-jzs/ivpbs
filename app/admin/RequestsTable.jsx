@@ -2,7 +2,7 @@
 // import { createClient } from "@/lib/supabaseServer";
 import { supabase } from "@/lib/supabaseClient";
 import "./style.css"
-export default async function AdminRequestsPage() {
+export default async function RequestsTable() {
 //   const supabase = createClient();
 
   // Fetch all requests, sorted newest first
