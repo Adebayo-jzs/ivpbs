@@ -1,9 +1,10 @@
 // app/admin/requests/page.jsx
 // import { createClient } from "@/lib/supabaseServer";
+// import { createClient } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabaseClient";
 import "./style.css"
 export default async function RequestsTable() {
-//   const supabase = createClient();
+  // const supabase = createClient();
 
   // Fetch all requests, sorted newest first
   const { data: requests, error } = await supabase
@@ -48,7 +49,7 @@ export default async function RequestsTable() {
                <th>Time</th>
                <th>Location</th>
                <th>Status</th>
-               <th className="p-3 text-center">Action</th>
+               {/* <th className="p-3 text-center">Action</th> */}
             </tr>
           </thead> 
           <tbody>
@@ -64,7 +65,7 @@ export default async function RequestsTable() {
                 <td className="p-3 font-semibold text-blue-600">
                   {req.status || "Pending"}
                 </td>
-                <td className="p-3 text-center">
+                {/* <td className="p-3 text-center">
                   <form action={`/api/admin/requests/${req.id}/accept`} method="post">
                     <button
                       type="submit"
@@ -81,7 +82,7 @@ export default async function RequestsTable() {
                       Decline
                     </button>
                   </form>
-                </td>
+                </td> */}
               </tr>
               );
             })}
