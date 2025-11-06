@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabaseServer";
+import { createClient } from "@supabase/supabase-js";
 
 export async function DELETE(req, { params }) {
   const supabase = createClient();
