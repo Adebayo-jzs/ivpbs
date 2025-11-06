@@ -1,7 +1,8 @@
 // app/admin/requests/page.jsx
 // import { createClient } from "@/lib/supabaseServer";
 // import { createClient } from "@supabase/supabase-js";
-import { supabase } from "@/lib/supabaseClient";
+// import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/lib/supabase";
 import "./style.css"
 export default async function RequestsTable() {
   // const supabase = createClient();
