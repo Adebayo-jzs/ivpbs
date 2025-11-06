@@ -1,4 +1,4 @@
-"use client"
+export const revalidate = 0
 // app/admin/requests/page.jsx
 // import { createClient } from "@/lib/supabaseServer";
 // import { createClient } from "@supabase/supabase-js";
