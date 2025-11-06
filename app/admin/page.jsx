@@ -1,3 +1,4 @@
+"use client"
 // app/admin/requests/page.jsx
 // import { createClient } from "@/lib/supabaseServer";
 // import { createClient } from "@supabase/supabase-js";
