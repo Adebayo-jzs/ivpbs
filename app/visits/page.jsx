@@ -133,7 +133,7 @@ export default function VisitsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black p-6">
+    <div className="min-h-screen bg-[#000000] p-6">
       <div className="flex flex-col items-center mb-6">
         <h1 className="text-[#1cca5b] text-2xl font-bold text-center mb-2">Available Visits</h1>
         {profile && (

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.78.0",
+    "lucide-react": "^0.552.0",
     "mongod": "^2.0.0",
     "mongoose": "^8.19.2",
     "next": "16.0.0",

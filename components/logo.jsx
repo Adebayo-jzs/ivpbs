@@ -110,7 +110,7 @@ export function Logo({ size = 64 }) {
         
 //         {/* Windows on left building */}
 //         <rect x="2.5" y="12" width="3" height="3" fill="#000000" />
-//         <rect x="2.5" y="18" width="3" height="3" fill="#000000" />
+//         <rect x="2.5" y="18" width="3" height="3" fill="#" />
 //         <rect x="2.5" y="24" width="3" height="3" fill="#000000" />
         
 //         {/* Windows on middle building */}

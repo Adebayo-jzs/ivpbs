@@ -7,15 +7,22 @@ h1{
 .cards{
   display: flex;
   gap: 20px;
+  margin-bottom: 30px;
 }
 .card{
-  background-color: #D6EEEE;
+  background-color: #0d0d0d;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.289);
   width: 100%;
   padding: 12px;
   border-radius: 10px;
 }
-.card-title{
+.card-desc{
   margin-bottom: 30px;
+}
+.card-info{
+  color: #1cca5b;
+  font-weight: 900;
 }
 #accept{
     background-color: green;
@@ -43,7 +50,7 @@ h1{
 table{
     width: 100%;
     border-collapse: collapse;
-    
+    color: white;
     /* margin: ; */
 }
 /* tr:nth-child(even) {
@@ -60,5 +67,5 @@ th, td {
   padding: 10px;
 }
 tr:hover{
-    background-color: #D6EEEE;
+    background-color: #0d0d0d;
 }

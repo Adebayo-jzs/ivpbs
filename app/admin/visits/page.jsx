@@ -127,7 +127,7 @@ export default function AdminVisits() {
       </form>
       </div>
 
-      <h2 className="text-xl font-bold mt-8 mb-4">Existing Visits</h2>
+      <h2 className="text-xl text-white font-bold mt-8 mb-4">Existing Visits</h2>
 
       <div className="grid md:grid-cols-3 gap-4">
         {visits.map((visit) => (
