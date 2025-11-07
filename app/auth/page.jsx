@@ -53,7 +53,7 @@ export default function AuthPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4" style={{backgroundColor:"#000000",}}>
-      <div className="w-full max-w-md" style={{backgroundColor:"#0d0d0d",border:"0.1px solid rgba(255, 255, 255, 0.41)",borderRadius:"5px", paddingTop:"25px"}}>
+      <div className="w-full max-w-md" style={{backgroundColor:"#0d0d0d",border:"1px solid #1f1f1f",borderRadius:"5px", paddingTop:"25px"}}>
         <div className="flex justify-center">
           <Logo size={90} />
         </div>

@@ -31,5 +31,5 @@ input,textarea{
   /* outline: none; */
   outline-color: #1cca5b !important;  
   outline-width: 3px !important;
-  border: 0.1px solid rgba(255, 255, 255, 0.41);
+  border: 0.1px solid #1f1f1f;
 }

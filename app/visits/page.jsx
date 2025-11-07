@@ -145,7 +145,7 @@ export default function VisitsPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {visits.map((visit) => (
-          <div key={visit.id} className="bg-[#0d0d0d] p-4 shadow rounded" style={{border:"1px solid rgba(255, 255, 255, 0.41)"}}>
+          <div key={visit.id} className="bg-[#0d0d0d] p-4 shadow rounded" style={{border:"1px solid #1f1f1f"}}>
             <h2 className="text-xl text-white font-semibold">{visit.title}</h2>
             <p className="text-white mt-1">
               📍 {visit.industry + " - " + visit.location}

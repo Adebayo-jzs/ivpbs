@@ -12,9 +12,9 @@ export default function AdminSidebar() {
     <aside
       className={`bg-[#000000] text-white px-2 transition-all duration-300 ${
         isOpen ? "w-60" : "w-13"
-      }`} style={{borderRight:"1px solid rgba(255, 255, 255, 0.41)"}}
+      }`} style={{borderRight:"1px solid #1f1f1f"}}
     >
-      <div className="py-4 px-2  flex justify-between items-center font-bold text-lg" style={{borderBottom:"1px solid rgba(255,255,255,0.2)"}}>
+      <div className="py-4 px-2  flex justify-between items-center font-bold text-lg" style={{borderBottom:"1px solid #1f1f1f"}}>
         {isOpen && <span>Admin Dashboard</span>}
         <button onClick={() => setIsOpen(!isOpen)}> <PanelLeft size={17} /> </button>
       </div>

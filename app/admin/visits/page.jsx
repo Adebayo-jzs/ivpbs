@@ -64,7 +64,7 @@ export default function AdminVisits() {
       <h1 className="text-2xl text-white font-bold mb-4">Admin – Add Visit</h1>
 
       <div className="w-full max-w-2xl bg-[#0d0d0d] p-5 shadow rounded  "
-        style={{border:"1px solid rgba(255, 255, 255, 0.41)"}}>
+        style={{border:"1px solid #1f1f1f"}}>
         <h1 className="text-2xl text-[white] font-bold mb-4 text-center">Add new visits/events</h1>
       <form
         onSubmit={handleSubmit}
@@ -131,7 +131,7 @@ export default function AdminVisits() {
 
       <div className="grid md:grid-cols-3 gap-4">
         {visits.map((visit) => (
-          <div key={visit.id} className="p-4 bg-[#0d0d0d] shadow rounded" style={{border:"1px solid rgba(255, 255, 255, 0.41)"}}>
+          <div key={visit.id} className="p-4 bg-[#0d0d0d] shadow rounded" style={{border:"1px solid #1f1f1f"}}>
             <h3 className="font-semibold text-white">{visit.title}</h3>
             <p className="text-white">{visit.description}</p>
             <p className="text-sm text-gray-600 text-white">{visit.industry + " - "+ visit.location}</p>
