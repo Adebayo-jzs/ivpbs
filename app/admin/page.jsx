@@ -1,3 +1,4 @@
+export const revalidate = 0
 import { supabase } from "@/lib/supabase";
 import "./style.css"
 export default async function AdminOverview() {
