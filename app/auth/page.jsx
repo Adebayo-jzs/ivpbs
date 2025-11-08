@@ -3,6 +3,7 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import { Logo } from "@/components/logo";
+import { toast } from "react-toastify";
 
 export default function AuthPage() {
   const [email, setEmail] = useState("");
@@ -10,19 +11,22 @@ export default function AuthPage() {
   const [name, setName] = useState("");
   const [matric, setMatric] = useState("");
   const [isLogin, setIsLogin] = useState(true);
-  const [message, setMessage] = useState("");
+  // const [message, setMessage] = useState("");
   const router = useRouter();
 
   const handleAuth = async (e) => {
     e.preventDefault();
-    setMessage("");
+    // setMessage("");
 
     if (isLogin) {
       // Login flow
       const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) setMessage(error.message);
+      // if (error) setMessage(error.message);
+      if(error){
+        toast.error(error.message);
+      }
       else {
-        setMessage("Login successful!");
+        toast.success("Login successful!");
         router.push("/visits"); // 👈 Redirect here
       }
     } else {
@@ -32,8 +36,10 @@ export default function AuthPage() {
         password,
       });
 
-      if (error) return setMessage(error.message);
-
+      // if (error) return setMessage(error.message);
+      if (error) {
+        return toast.error(error.message);
+      }  
       const user = data?.user;
       if (!user) return setMessage("Signup failed, please try again.");
 
@@ -46,8 +52,13 @@ export default function AuthPage() {
         },
       ]);
 
-      if (profileError) setMessage(profileError.message);
-      else setMessage("Signup successful! You can now log in.");
+      if (profileError) {
+        toast.error(profileError.message);
+      } else {
+        toast.success("Signup successful! You can now log in.");
+        // setIsLogin(true); // Optional → automatically show login form
+      }
+      // else setMessage("Signup successful! You can now log in.");
     }
   };
 
@@ -112,7 +123,8 @@ export default function AuthPage() {
             ? "Don't have an account? Sign Up"
             : "Already have an account? Login"}
         </p>
-        {message && <p className="mt-2 text-center text-gray-600">{message}</p>}
+        {/* {message && <p className="mt-2 text-center text-gray-600">{message}</p>} */}
+        
       </form>
       </div>
     </div>

@@ -77,7 +77,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-
+import { LocateIcon, LocationEdit } from "lucide-react";
 export default function VisitsPage() {
   const [visits, setVisits] = useState([]);
   const [user, setUser] = useState(null);
@@ -111,8 +111,8 @@ export default function VisitsPage() {
   }, []);
 
   const handleBook = async (visit) => {
-    if (!user) return setMessage("You must be logged in to book a visit.");
-    if (!profile) return setMessage("User profile not found.");
+    // if (!user) return setMessage("You must be logged in to book a visit.");
+    // if (!profile) return setMessage("User profile not found.");
 
     const { error } = await supabase.from("requests").insert([
       {
@@ -148,7 +148,7 @@ export default function VisitsPage() {
           <div key={visit.id} className="bg-[#0d0d0d] p-4 shadow rounded" style={{border:"1px solid #1f1f1f"}}>
             <h2 className="text-xl text-white font-semibold">{visit.title}</h2>
             <p className="text-white mt-1">
-              📍 {visit.industry + " - " + visit.location}
+              <LocationEdit/> {visit.industry + " - " + visit.location}
             </p>
             <p className="text-white">🗓️ {visit.date}</p>
             <p className="text-white">⏰ {visit.time}</p>

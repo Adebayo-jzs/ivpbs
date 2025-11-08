@@ -6,6 +6,7 @@ export const revalidate = 0
 // import { supabase } from "@/lib/supabaseClient";
 import { supabase } from "@/lib/supabase";
 import "../style.css"
+import ActionButtons from "./ActionButtons";
 export default async function RequestsTable() {
   // const supabase = createClient();
 
@@ -55,7 +56,7 @@ export default async function RequestsTable() {
                <th>Time</th>
                <th>Location</th>
                <th>Status</th>
-               {/* <th className="p-3 text-center">Action</th> */}
+               <th className="p-3 text-center">Action</th>
             </tr>
           </thead> 
           <tbody>
@@ -71,8 +72,8 @@ export default async function RequestsTable() {
                 <td className="p-3 font-semibold text-blue-600">
                   {req.status || "Pending"}
                 </td>
-                {/* <td className="p-3 text-center">
-                  <form action={`/api/admin/requests/${req.id}/accept`} method="post">
+                <td className="p-3 text-center">
+                  {/* <form>
                     <button
                       type="submit"
                       id="accept"
@@ -80,15 +81,16 @@ export default async function RequestsTable() {
                       Accept
                     </button>
                   </form>
-                  <form action={`/api/admin/requests/${req.id}/decline`} method="post">
+                  <form>
                     <button
                       type="submit"
                       id="decline"
                     >
                       Decline
                     </button>
-                  </form>
-                </td> */}
+                  </form> */}
+                  <ActionButtons req={req}/>
+                </td>
               </tr>
               );
             })}

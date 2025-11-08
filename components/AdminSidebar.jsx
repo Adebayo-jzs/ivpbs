@@ -53,7 +53,7 @@ export default function AdminSidebar() {
               : "border-transparent"
           }`}>
             <Users size={17} />
-          {isOpen ? "Settings" : ""}
+          {isOpen ? "Users" : ""}
         </Link>
       </nav>
     </aside>

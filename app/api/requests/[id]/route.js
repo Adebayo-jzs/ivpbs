@@ -1,26 +1,28 @@
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/lib/supabase";
+// import { createClient } from "@/lib/supabaseServer";
 
-export async function DELETE(req, { params }) {
-  const supabase = createClient();
-  const { id } = params;
+export async function GET() {
 
-  const { error } = await supabase.from("requests").delete().eq("id", id);
+  const { data, error } = await supabase
+    .from("requests")
+    .select("*")
+    .order("created_at", { ascending: false });
 
   if (error) return Response.json({ error: error.message }, { status: 500 });
-  return Response.json({ message: "Request deleted successfully" });
+  return Response.json(data);
 }
 
-export async function PUT(req, { params }) {
+export async function POST(req) {
   const supabase = createClient();
-  const { id } = params;
   const body = await req.json();
 
-  const { status } = body; // e.g. accepted, rejected, etc.
-  const { error } = await supabase
+  const { name, email, date, department } = body;
+
+  const { data, error } = await supabase
     .from("requests")
-    .update({ status })
-    .eq("id", id);
+    .insert([{ name, email, date, department }])
+    .select();
 
   if (error) return Response.json({ error: error.message }, { status: 500 });
-  return Response.json({ message: "Status updated" });
+  return Response.json({ message: "Request added successfully", data });
 }
