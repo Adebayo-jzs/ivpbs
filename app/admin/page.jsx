@@ -26,7 +26,7 @@ export default async function AdminOverview() {
   return (
     <div>
       <h1 className="text-3xl text-white font-bold mb-4">Overview</h1>
-      {requests.length === 0 ? (
+      {(requests.length === 0 & visits.length === 0 & profiles.length & 0) ? (
         <p className="text-center text-white">Overiew Unavailable.</p>
       ) : (
         

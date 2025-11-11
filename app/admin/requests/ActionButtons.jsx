@@ -1,5 +1,5 @@
 "use client";
-
+import "../style.css"
 import { toast } from "react-toastify";
 
 export default function ActionButtons({ req }) {
@@ -31,14 +31,14 @@ export default function ActionButtons({ req }) {
     <div className="space-y-2">
       <button
         onClick={() => handleAction("Accepted")}
-        className="bg-green-600 text-white px-3 py-1 rounded"
+        id="accept"
       >
         Accept
       </button>
 
       <button
         onClick={() => handleAction("Declined")}
-        className="bg-red-600 text-white px-3 py-1 rounded"
+        id="decline"
       >
         Decline
       </button>

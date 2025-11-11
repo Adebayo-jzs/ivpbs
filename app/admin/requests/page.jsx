@@ -7,16 +7,16 @@ export const revalidate = 0
 import { supabase } from "@/lib/supabase";
 import "../style.css"
 import ActionButtons from "./ActionButtons";
+import { toast } from "react-toastify";
 export default async function RequestsTable() {
   // const supabase = createClient();
 
   // Fetch all requests, sorted newest first
   const { data: requests, error } = await supabase
-    .from("requests")
-    .select("*")
-    .order("created_at", { ascending: false });
+    .from("requests")("created_at", { ascending: false });
 
   if (error) {
+    // console.error("Error fetching requests:", error.message);
     console.error("Error fetching requests:", error.message);
     return <>
     <p className="text-red-500">Failed to load requests.</p>
@@ -46,6 +46,7 @@ export default async function RequestsTable() {
             <p className="card-info">{requests.length}</p>
           </div>
         </div>
+        <div className="table-container"></div>
           <table border="1" cellPadding="8">
           <thead>
             <tr>
@@ -58,7 +59,7 @@ export default async function RequestsTable() {
                <th>Status</th>
                <th className="p-3 text-center">Action</th>
             </tr>
-          </thead> 
+          </thead>
           <tbody>
             {requests.map((req) => {
               return (
@@ -73,22 +74,6 @@ export default async function RequestsTable() {
                   {req.status || "Pending"}
                 </td>
                 <td className="p-3 text-center">
-                  {/* <form>
-                    <button
-                      type="submit"
-                      id="accept"
-                    >
-                      Accept
-                    </button>
-                  </form>
-                  <form>
-                    <button
-                      type="submit"
-                      id="decline"
-                    >
-                      Decline
-                    </button>
-                  </form> */}
                   <ActionButtons req={req}/>
                 </td>
               </tr>

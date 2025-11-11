@@ -94,7 +94,7 @@ export default function VisitsPage() {
       if (user) {
         const { data: profileData, error: profileError } = await supabase
           .from("profiles")
-          .select("name, matric_no")
+          .select("name, matric_no,role")
           .eq("id", user.id)
           .single();
 
@@ -137,7 +137,7 @@ export default function VisitsPage() {
       <div className="flex flex-col items-center mb-6">
         <h1 className="text-[#1cca5b] text-2xl font-bold text-center mb-2">Available Visits</h1>
         {profile && (
-          <p className="text-lg text-white">Welcome, {profile.name} 👋</p>
+          <p className="text-lg text-white">Welcome, {profile.name} + {profile.role}👋</p>
         )}
       </div>
 

@@ -25,7 +25,7 @@ h1{
   font-weight: 900;
 }
 #accept{
-    background-color: green;
+    background-color: #1cca5b;
     margin-right: 10px;
     display: inline;
     border-radius: 5px;
@@ -43,29 +43,33 @@ h1{
 /* table, th, td {
   border: 1px solid black;
 } */
- .table-container {
+.table-container {
   width: 100%;
   overflow-x: auto; /* ✅ Enables horizontal scroll */
 }
 table{
-    width: 100%;
-    border-collapse: collapse;
-    color: white;
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+  background-color: #0d0d0d;
+  border:1px solid #1f1f1f;
+  border-radius: 20px;
+  padding: 10px;
     /* margin: ; */
 }
 /* tr:nth-child(even) {
   background-color: #D6EEEE;
 } */
 tr {
-  border-bottom: 1px solid #ddd;
-  padding: 13px;
+  border-bottom: 1px solid #1f1f1f;
+  /* padding: 20px; */
 }
 thead th{
-    text-align: start;
+  text-align: start;
 }
 th, td {
-  padding: 10px;
+  padding: 20px;
 }
 tr:hover{
-    background-color: #0d0d0d;
+  background-color: #0d0d0d;
 }
