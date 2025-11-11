@@ -69,9 +69,17 @@ export default async function RequestsTable() {
                 <td>{req.date}</td>
                 <td>{req.time}</td>
                 <td>{req.location}</td>
-                <td className="p-3 font-semibold text-blue-600">
+                {/* <td className="p-3 font-semibold text-blue-600">
+                  {req.status || "Pending"}
+                </td> */}
+                <td className="p-3 font-semibold"
+                    style={{
+                        color: req.status === "Accepted" ? "green" : req.status === "Declined"? "red"
+                      : "#3b82f6", // default pending blue
+                    }}>
                   {req.status || "Pending"}
                 </td>
+
                 <td className="p-3 text-center">
                   {/* <form>
                     <button
