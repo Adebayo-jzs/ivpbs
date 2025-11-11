@@ -1,9 +1,18 @@
 export const revalidate = 0
 import { supabase } from "@/lib/supabase";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 import "./style.css"
 export default async function AdminOverview() {
-    const { data: profiles } = await supabase
-    .from("profiles")
+  const session = await getServerSession(authOptions);
+
+  if (!session) redirect("/auth");
+  // if (session.user.role_id !== 1) redirect("/unauthorized");
+  console.log(session.user.role_id);
+  
+    const { data: users } = await supabase
+    .from("users")
     .select("*");
     const { data: visits } = await supabase
     .from("visits")
@@ -26,6 +35,8 @@ export default async function AdminOverview() {
   return (
     <div>
       <h1 className="text-3xl text-white font-bold mb-4">Overview</h1>
+      <h1 className="text-white font-bold mb-4">Welcome Admin, {session.user.name}</h1>
+      {/* <p>Role ID: {session.user.role_id}</p> */}
       {requests.length === 0 ? (
         <p className="text-center text-white">Overiew Unavailable.</p>
       ) : (
@@ -44,7 +55,7 @@ export default async function AdminOverview() {
           <div className="card">
             <h1 className="card-title">User Profiles</h1>
             <p className="card-desc">Registered Users</p>
-            <h1 className="card-info">{profiles.length}</h1>
+            <h1 className="card-info">{users.length}</h1>
           </div>
         </div>
         )}

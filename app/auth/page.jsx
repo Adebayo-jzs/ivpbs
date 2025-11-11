@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
+// import { supabase } from "@/lib/supabaseClient";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Logo } from "@/components/logo";
 import { toast } from "react-toastify";
@@ -9,58 +10,44 @@ export default function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [matric, setMatric] = useState("");
+  // const [matric, setMatric] = useState("");
   const [isLogin, setIsLogin] = useState(true);
   // const [message, setMessage] = useState("");
   const router = useRouter();
 
   const handleAuth = async (e) => {
     e.preventDefault();
-    // setMessage("");
 
     if (isLogin) {
-      // Login flow
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      // if (error) setMessage(error.message);
-      if(error){
-        toast.error(error.message);
-      }
-      else {
-        toast.success("Login successful!");
-        router.push("/visits"); // 👈 Redirect here
-      }
-    } else {
-      // Signup flow
-      const { data, error } = await supabase.auth.signUp({
+      // 🔐 LOGIN
+      const res = await signIn("credentials", {
+        redirect: false,
         email,
         password,
       });
 
-      // if (error) return setMessage(error.message);
-      if (error) {
-        return toast.error(error.message);
-      }  
-      const user = data?.user;
-      if (!user) return setMessage("Signup failed, please try again.");
-
-      // Add profile record
-      const { error: profileError } = await supabase.from("profiles").insert([
-        {
-          id: user.id,
-          name,
-          matric_no: matric,
-        },
-      ]);
-
-      if (profileError) {
-        toast.error(profileError.message);
-      } else {
-        toast.success("Signup successful! You can now log in.");
-        // setIsLogin(true); // Optional → automatically show login form
+      if (res?.error) toast.error(res.error);
+      else {
+        toast.success("Login successful!");
+        router.push("/visits");
       }
-      // else setMessage("Signup successful! You can now log in.");
+    } else {
+      // 🆕 SIGNUP
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) toast.error(data.error);
+      else {
+        toast.success(data.message);
+        setIsLogin(true);
+      }
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4" style={{backgroundColor:"#000000",}}>
@@ -86,13 +73,7 @@ export default function AuthPage() {
               className="w-full mb-3 p-2 rounded"
               required
             />
-            <input
-              type="text"
-              placeholder="Matric Number"
-              onChange={(e) => setMatric(e.target.value)}
-              className="w-full mb-3 p-2 rounded"
-              required
-            />
+             
           </>
         )}
 
