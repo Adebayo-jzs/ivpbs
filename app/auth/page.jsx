@@ -135,6 +135,13 @@
 
 
 "use client";
+<<<<<<< HEAD
+=======
+import { useState } from "react";
+// import { supabase } from "@/lib/supabaseClient";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+>>>>>>> 3ffad8dda0635fb5f8d47f982b6106f7c49600a7
 import { Logo } from "@/components/logo";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
@@ -144,24 +151,39 @@ import { toast } from "react-toastify";
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState("");
+<<<<<<< HEAD
   const [matric, setMatric] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+=======
+  // const [matric, setMatric] = useState("");
+  const [isLogin, setIsLogin] = useState(true);
+  // const [message, setMessage] = useState("");
+>>>>>>> 3ffad8dda0635fb5f8d47f982b6106f7c49600a7
   const router = useRouter();
 
   const handleAuth = async (e) => {
     e.preventDefault();
 
     if (isLogin) {
+<<<<<<< HEAD
+=======
+      // 🔐 LOGIN
+>>>>>>> 3ffad8dda0635fb5f8d47f982b6106f7c49600a7
       const res = await signIn("credentials", {
         redirect: false,
         email,
         password,
       });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3ffad8dda0635fb5f8d47f982b6106f7c49600a7
       if (res?.error) toast.error(res.error);
       else {
         toast.success("Login successful!");
         router.push("/visits");
+<<<<<<< HEAD
       }
     } else {
       // Signup: server-side insertion into Supabase
@@ -178,6 +200,28 @@ export default function AuthPage() {
     }
   };
  return (
+=======
+      }
+    } else {
+      // 🆕 SIGNUP
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) toast.error(data.error);
+      else {
+        toast.success(data.message);
+        setIsLogin(true);
+      }
+    }
+  };
+  
+
+  return (
+>>>>>>> 3ffad8dda0635fb5f8d47f982b6106f7c49600a7
     <div className="min-h-screen flex items-center justify-center bg-background p-4" style={{backgroundColor:"#000000",}}>
       <div className="w-full max-w-md" style={{backgroundColor:"#0d0d0d",border:"1px solid #1f1f1f",borderRadius:"5px", paddingTop:"25px"}}>
         <div className="flex justify-center">

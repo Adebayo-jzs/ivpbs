@@ -8,9 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.78.0",
     "bcryptjs": "^3.0.3",
+=======
+    "@next-auth/supabase-adapter": "^0.2.1",
+    "@supabase/supabase-js": "^2.78.0",
+    "bcrypt": "^6.0.0",
+>>>>>>> 3ffad8dda0635fb5f8d47f982b6106f7c49600a7
     "lucide-react": "^0.552.0",
     "mongod": "^2.0.0",
     "mongoose": "^8.19.2",

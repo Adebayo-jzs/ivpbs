@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import AdminSidebar from "@/components/AdminSidebar";
 // // import Unauthorised from "../not-authorized";
 // import { useState,useEffect } from "react";
@@ -8,6 +9,12 @@
 // export const metadata = {
 //   title: "Admin Dashboard",
 // };
+=======
+import AdminSidebar from "@/components/AdminSidebar"; 
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+>>>>>>> 3ffad8dda0635fb5f8d47f982b6106f7c49600a7
 
 // export default async function AdminLayout({ children }) {
 //   const supabase = getSupabaseServerClient();
@@ -98,8 +105,17 @@ export const metadata = {
 };
 
 export default async function AdminLayout({ children }) {
+<<<<<<< HEAD
   
 
+=======
+  const session = await getServerSession(authOptions);
+
+  if (!session) redirect("/auth");
+  if (session.user.role_id !== 1) redirect("/unauthorized");
+  console.log(session.user.role_id);
+  
+>>>>>>> 3ffad8dda0635fb5f8d47f982b6106f7c49600a7
   return (
     <div className="flex h-screen bg-black">
       <AdminSidebar />
